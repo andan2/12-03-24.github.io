@@ -1,0 +1,400 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background-image: url("./Imagenes/tokyo_disney_sea.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+/*# sourceMappingURL=style.css.map */
+
+/* style.css */
+
+/* alas */
+
+.wing {
+  background:white;
+   border-radius: 12px 20px 60px 20px;
+   width:120px;
+   height:50px; margin-top:300px;
+   position:absolute;
+}
+
+/* ala derecha */
+
+.right {
+  margin-left:-60px;
+  left:50%;
+  animation:flap1 1s infinite;
+  border-bottom:3px solid rgba(0,0,0,.08);
+   border-radius: 12px 20px 60px 20px;
+  transform:rotate(-10deg) translate(250px,0);
+}
+
+@keyframes flap1 {
+  0% {
+      transform:rotate(-10deg) translate(250px,0);
+  }
+  
+  50% {
+      transform:rotate(-5deg) translate(250px,0);
+  }
+}
+.right:before {
+  position:absolute;
+  content:'';
+  background:white;
+  width:70%;
+  height:70%;
+     border-bottom:3px solid rgba(0,0,0,.08);
+  border-radius: 20px 20px 60px 20px;
+  transform:rotate(20deg) translate(-1px,0);
+  margin-top:38px;
+}
+
+.right:after {
+    position:absolute;
+  content:'';
+  background:white;
+  width:40%;
+  transform:rotate(29deg) translate(-8px,0);
+  height:30%;
+     border-bottom:3px solid rgba(0,0,0,.08);
+  border-radius: 0px 0px 60px 70px;
+  margin-top:66px;
+}
+
+/* ala izquierda */
+
+.left {
+  border-radius:12px 20px 20px 60px;
+   margin-left:-60px;
+  left:50%;
+   animation:flap2 1s infinite;
+    border-bottom:3px solid rgba(0,0,0,.08);
+  transform:rotate(10deg) translate(-248px, 0);
+}
+
+@keyframes flap2 {
+  0% {
+      transform:rotate(10deg) translate(-248px,0);
+  }
+  
+  50% {
+      transform:rotate(5deg) translate(-248px,0);
+  }
+}
+
+
+.left:before {
+  position:absolute;
+  content:'';
+  background:white;
+  width:70%;
+     border-bottom:3px solid rgba(0,0,0,.08);
+  transform:translate(46%,0) rotate(-20deg);
+  height:60%;
+    border-radius:12px 20px 70px 70px;
+  margin-top:40px;
+}
+
+.left:after {
+    position:absolute;
+  content:'';
+  background:white;
+  width:40%;
+     border-bottom:3px solid rgba(0,0,0,.08);
+  height:30%;
+   transform:translate(164%,0) rotate(-34deg);
+   border-radius:0px 0px 70px 60px;
+  margin-top:58px;
+}
+
+@media screen and (max-width: 768px) {
+  .wing, .right, .left {
+      display: none;
+  }
+}
+
+/* corazon */
+
+.heart{
+  position: absolute;
+  width: 120px;
+  z-index:99998;
+  height: 100px;
+  margin-left:-50px;
+  left:50%;
+   animation: heart 1s infinite;
+  transform:scale(.8);
+  transition:.6s;
+  margin-top:260px;
+  
+}
+.heart:before,
+.heart:after{
+  content: "";
+  width: 50px;
+  height: 80px;
+  position: absolute;
+  left: 50px;
+  top: 0;
+  border-radius: 50px 50px 6px 6px;
+  background: crimson;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+.heart:after{
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin :100% 100%;
+}
+
+@keyframes heart {
+  0% {
+      transform: scale(.8) translate(0,0);
+  }
+  
+  50% {
+      transform: scale(.92) translate(0, 12px);
+  }
+  
+  100% {
+      transform:scale(.8);
+  }
+}
+
+/* envelope */
+
+#envelope {
+background: white; 
+margin: 200px auto;
+height: 200px;
+position: relative;
+width: 320px;
+border-radius:8px;
+overflow:hidden;
+animation: floaty 1s infinite;
+}
+
+@keyframes floaty {
+  0% {
+      transform:translate(0,0);
+  }
+  
+  50% {
+      transform:translate(0, 12px);
+  }
+}
+
+/* bottom, left, and right sides */
+.sides {
+border-color: transparent #fbfbfb #f7f7f7 #fcfcfc;
+border-style: solid;
+border-width: 90px 170px;
+bottom: 0;
+height: 0;
+left: 0;
+position: absolute;
+width: 0;
+}
+
+/* top side */
+
+.top {
+border-color: white transparent transparent;
+border-style: solid;
+border-width: 108px 140px 90px 140px;
+height: 0;
+left: 0;
+position: absolute;
+top: 0;
+transform-origin: 50% 0;
+width: 0;
+}
+
+/*=============== VARIABLES CSS ===============*/
+
+/* Estilos base para la lightbox */
+.lightbox {
+  display: none; /* Oculto inicialmente */
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.lightbox-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 3%;
+  border-radius: 10px;
+  width: 50%; /* Ancho ajustable */
+  position: relative;
+  /* Otros estilos que desees añadir */
+}
+
+/* Estilos para cerrar la lightbox */
+.close {
+  color: #aaaaaa;
+  position: absolute; /* Posición absoluta respecto a su contenedor relativo */
+  top: 10px; /* Espaciado desde la parte superior del contenedor */
+  right: 15px; /* Espaciado desde la parte derecha del contenedor */
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Estilos base para el activador de la lightbox */
+.heart {
+  cursor: pointer;
+  /* Añade aquí otros estilos para el elemento .heart */
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+  .lightbox-content {
+      margin: 20% auto;
+      width: 85%; /* Más ancho en dispositivos móviles para mejor legibilidad */
+  }
+}
+
+/* Estilos para pantallas medianas (tabletas) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .lightbox-content {
+      margin: 15% auto;
+      width: 85%;
+  }
+}
+
+/* Definición de la fuente 'Andrei' para letras (incluyendo acentos) y caracteres especiales, excluyendo números */
+@font-face {
+  font-family: 'Andrei';
+  src: url('Andrei.ttf') format('truetype');
+  /* Especificamos el rango Unicode para letras (mayúsculas y minúsculas), acentos y caracteres especiales, excluyendo números */
+  unicode-range: U+0020-0040, U+005B-0060, U+007B-007E, /* Caracteres especiales y signos de puntuación */
+                 U+00C0-00FF, /* Caracteres latinos con acentos */
+                 U+0100-017F, /* Caracteres latinos extendidos */
+                 U+0041-005A, U+0061-007A; /* Letras mayúsculas y minúsculas */
+}
+
+/* Definición de la fuente 'NumerosAndrei' específicamente para números */
+@font-face {
+  font-family: 'NumerosAndrei';
+  src: url('Numeros_andrei.ttf') format('truetype');
+  /* Rango Unicode para los números del 0 al 9 */
+  unicode-range: U+0030-0039;
+}
+
+/* Aplicación de la fuente 'Andrei' como predeterminada para el cuerpo del documento, 
+   con 'NumerosAndrei' como complementaria para los números y 'sans-serif' como respaldo */
+body {
+  font-family: 'Andrei', 'NumerosAndrei', sans-serif;
+  font-size: 20px;
+}
+
+/* Estilos específicos para la caja de luz del video */
+.lightboxVideo {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Fijo en la pantalla */
+  z-index: 999999; /* En primer plano */
+  left: 0;
+  top: 5%;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Altura completa */
+  background-color: rgba(0,0,0,0.8); /* Fondo semi-transparente */
+}
+
+.lightbox-contentVideo {
+  position: relative;
+  width: 90%; /* Ancho del video como porcentaje para ser responsive */
+  max-width: 465px; /* Máximo ancho posible */
+  margin: auto;
+  padding-top: 3%; /* Espacio superior */
+}
+
+.lightboxVideo video {
+  width: 100%; /* El video ocupa todo el ancho del contenedor */
+  max-height: 70vh; /* Altura máxima para evitar desbordamiento */
+}
+
+.closeVideo {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Media query para pantallas pequeñas, como móviles */
+@media (max-width: 600px) {
+  .lightbox-contentVideo {
+    width: 95%; /* Mayor ancho para pantallas pequeñas */
+    padding-top: 10%; /* Más espacio en la parte superior */
+  }
+  .closeVideo {
+    top: 5px;
+    right: 10px;
+    font-size: 20px; /* Tamaño de cierre más pequeño */
+  }
+}
+
+  /* botón del home */
+
+  .home-button-container {
+    position: absolute;
+    top: 73%; /* Ajusta según tu layout */
+    right: 20px; /* Ajusta según tu layout */
+    z-index: 800; /* Asegúrate de que no quede detrás de otros elementos */
+    }
+  
+    #home-button {
+    display: inline-block; /* Hace que el enlace se comporte como un botón */
+    width: 23px; /* Ajusta el ancho a tu preferencia */
+    height: 23px; /* Ajusta la altura para mantener el botón proporcionado */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con opacidad */
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    }
+    
+    #home-button i {
+    color: white; /* Icono blanco */
+    font-size: 20px;
+    text-align: center;
+    }
+    
+    #home-button:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo más opaco al pasar el ratón */
+    }
+
+ /* Estilo para hacer la imagen responsive */
+.responsive-img {
+  width: 100%;  /* Ancho máximo del 100% del contenedor */
+  height: auto; /* La altura se ajusta automáticamente */
+}
+   
+    img.responsive {
+      max-width: 100%;
+      height: auto;
+  }
+
+  .responsive {
+    width: 100%;
+    height: auto;
+}
